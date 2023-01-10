@@ -1,0 +1,17 @@
+#!/bin/bash 
+. constants.env
+echo -e "\nlist of browsers and device types that made request to the server and the corresponding count : "
+for ((i=0;i<${#browsers[@]};i++))
+do 
+count=`grep ${browsers[$i]} access.log | wc -l`
+echo ${browsers[$i]} "-" $count
+done
+
+echo -e "\ndevice types\n"
+
+
+for ((i=0;i<${#devicetypes[@]};i++))
+do 
+count=`grep ${devicetypes[$i]} access.log | wc -l`
+echo ${devicetypes[$i]} "_" $count
+done

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo -e "\nTop 10 most accessed image resources and their count in descending order"
+sed -r 's/ //g' access.log > logs.log 
+grep "images" logs.log >> testingfile
+
+declare -a images2=()
+images2=`sort -r testingfile | uniq -c | head -10`
+for i in $images2:
+do 
+echo $i
+done

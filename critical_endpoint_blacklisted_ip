@@ -1,0 +1,14 @@
+#!/bin/bash 
+. constants.env
+echo -e "\ninformation related requests made by the blackisted IPs and to the critical endpoints : "
+for((i=0;i<${#ip_addresses[@]};i++))
+do
+grep ${ip_addresses[$i]} access.log
+done
+
+echo -e "\n"
+
+for ((i=0;i<${#critial_endpoints[@]};i++))
+do 
+grep ${critial_endpoints[$i]} access.log
+done

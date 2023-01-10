@@ -1,0 +1,5 @@
+#!/bin/bash
+echo -e "\nRequests made during a specific interval of time"
+read -r -p "Enter starting time interval : " start 
+read -r -p "Enter ending time interval : " end 
+sed -n "/$start/,/$end/p" access.log

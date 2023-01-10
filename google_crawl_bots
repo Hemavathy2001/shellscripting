@@ -1,0 +1,4 @@
+#!/bin/bash 
+val=`grep -i "googlebot" access.log | wc -l`
+echo "number of request made by Google crawl bots : " $val
+grep -i "googlebot" access.log

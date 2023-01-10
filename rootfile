@@ -1,0 +1,8 @@
+#!/bin/bash 
+./google_crawl_bots
+./images
+./critical_endpoint_blacklisted_ip
+./device_browser_types 
+./specific_time_interval_requests
+./request
+
