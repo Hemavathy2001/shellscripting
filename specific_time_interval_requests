@@ -1,5 +1,8 @@
 #!/bin/bash
-echo -e "\nRequests made during a specific interval of time"
+. constants.env
+echo -e "\nRequests made during a specific interval of time" >> output.txt
+# reading raw input from user
 read -r -p "Enter starting time interval : " start 
 read -r -p "Enter ending time interval : " end 
-sed -n "/$start/,/$end/p" access.log
+# sed -n to find specified interval of time from start to end 
+sed -n "/$start/,/$end/p" $logs >> output.txt

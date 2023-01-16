@@ -1,4 +1,8 @@
 #!/bin/bash 
-val=`grep -i "googlebot" access.log | wc -l`
-echo "number of request made by Google crawl bots : " $val
-grep -i "googlebot" access.log
+. constants.env
+# grep -i is used to get googlebot string inside file by ignoring case and wc -l is used to grt the line count
+val=`grep -i "googlebot" $logs | wc -l`
+
+# >> output.txt is used to store the output to the output.txt file
+echo "number of request made by Google crawl bots : " $val >> output.txt
+grep -i "googlebot" $logs >> output.txt

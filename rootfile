@@ -1,8 +1,26 @@
 #!/bin/bash 
-./google_crawl_bots
-./images
-./critical_endpoint_blacklisted_ip
-./device_browser_types 
-./specific_time_interval_requests
-./request
+echo  "select one of the options : "
+echo 'a=Number of request made by Google crawl bots'
+echo 'b=Most accessed image resources and their count in descending order'
+echo 'c=information related requests made by the blackisted IPs and to the critical endpoints' 
+echo 'd=list of browsers and device types'
+echo 'e=requests made during a specific interval of time'
+echo 'f=same ip making reqeust to the same endpoint and HTTP method more than 5 times continously'
+echo 'e=exceute all'
+echo 
+read -p "Enter the choice : " choice
 
+case $choice in 
+"a") google_crawl_bots;;
+"b") images;;
+"c") critical_endpoint_blacklisted_ip;;
+"d") device_browser_types ;;
+"e") specific_time_interval_requests;;
+"f") request;;
+"g") google_crawl_bots
+     images
+     critical_endpoint_blacklisted_ip
+     device_browser_types 
+     specific_time_interval_requests
+     request ;; 
+esac

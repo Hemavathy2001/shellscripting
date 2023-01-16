@@ -1,14 +1,18 @@
 #!/bin/bash 
+
+# constants.env contains constant arrays
 . constants.env
-echo -e "\ninformation related requests made by the blackisted IPs and to the critical endpoints : "
+echo -e "\ninformation related requests made by the blackisted IPs and to the critical endpoints : " >> output.txt
+
+# looging through the arrays and greping the items from the access.log file
 for((i=0;i<${#ip_addresses[@]};i++))
 do
-grep ${ip_addresses[$i]} access.log
+grep ${ip_addresses[$i]} $logs >> output.txt
 done
 
-echo -e "\n"
+echo -e "\n" >> output.txt
 
 for ((i=0;i<${#critial_endpoints[@]};i++))
 do 
-grep ${critial_endpoints[$i]} access.log
+grep ${critial_endpoints[$i]} $logs >> output.txt
 done

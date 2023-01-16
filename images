@@ -1,12 +1,19 @@
 #!/bin/bash
-
-echo -e "\nTop 10 most accessed image resources and their count in descending order"
-sed -r 's/ //g' access.log > logs.log 
+. constants.env
+echo -e "\nTop 10 most accessed image resources and their count in descending order" >> output.txt
+# removing white spaces from a access.log file and storing to logs.log file
+sed -r 's/ //g' $logs > logs.log 
+# getting the line with images string and storing the requests with images in testing file 
 grep "images" logs.log >> testingfile
-
+#removing logs.log file
+rm -rf logs.log 
+# declaring an array
 declare -a images2=()
+# sorting the testing file and grouping them and storing top 10 image requests to array
 images2=`sort -r testingfile | uniq -c | head -10`
+# looping through the array and storing the output
 for i in $images2:
 do 
-echo $i
+echo $i >> output.txt
 done
+rm -rf testingfile 

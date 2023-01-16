@@ -1,17 +1,19 @@
 #!/bin/bash 
+# constants.env contains constant arrays
 . constants.env
-echo -e "\nlist of browsers and device types that made request to the server and the corresponding count : "
+echo -e "\nlist of browsers and device types that made request to the server and the corresponding count : " >> output.txt
+# looging through the arrays and greping the items from the access.log file
 for ((i=0;i<${#browsers[@]};i++))
 do 
-count=`grep ${browsers[$i]} access.log | wc -l`
-echo ${browsers[$i]} "-" $count
+count=`grep ${browsers[$i]} $logs | wc -l`
+echo ${browsers[$i]} "-" $count >> output.txt
 done
 
-echo -e "\ndevice types\n"
+echo -e "\ndevice types\n" >> output.txt
 
 
 for ((i=0;i<${#devicetypes[@]};i++))
 do 
-count=`grep ${devicetypes[$i]} access.log | wc -l`
-echo ${devicetypes[$i]} "_" $count
+count=`grep ${devicetypes[$i]} $logs | wc -l`
+echo ${devicetypes[$i]} "_" $count >> output.txt
 done
